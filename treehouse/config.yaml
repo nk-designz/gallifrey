@@ -1,0 +1,6 @@
+endpoint_adress: "http://192.168.122.101:9000"
+access_key_id: "admin"
+secret_access_key: "start-123"
+force_path_style: true
+region: "EU-WEST"
+bucket_name: "gallifrey-images"

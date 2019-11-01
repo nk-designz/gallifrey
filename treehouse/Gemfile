@@ -1,0 +1,7 @@
+source 'https://rubygems.org' do
+  gem 'aws-sdk-s3'
+  gem 'json'
+  gem 'rubysl-securerandom'
+  gem 'rubysl-yaml'
+  gem 'sinatra'
+end
