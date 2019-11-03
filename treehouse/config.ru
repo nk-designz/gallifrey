@@ -8,5 +8,5 @@ at_exit do
   exit false
 end
 
-require 'src/app.rb'
+require 'src/api_controller.rb'
 run App

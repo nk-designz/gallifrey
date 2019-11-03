@@ -11,9 +11,9 @@ require 'securerandom'
 require 'yaml'
 
 # S3 Logic
-class Treehouse
+class S3ImageStore
   def initialize
-    @conf = read_conf('/etc/s3/config.yaml')
+    @conf = read_conf('/etc/treehouse/config.yaml')['s3']
     @conf.freeze
     @s3 = init_client
     init_bucket
@@ -54,18 +54,15 @@ class Treehouse
   def upload_image(image_name, image_data)
     image_key = "#{SecureRandom.hex}-#{image_name}"
     begin
+      # Set life to 200 years
       @s3.put_object(
         bucket: @conf['bucket_name'],
         key: image_key,
         body: image_data
       )
-      url = "#{@conf['endpoint_adress']}/#{@conf['bucket_name']}/#{image_key}"
-      return Hash[
-        'err' => false,
-        'msg' => nil,
-        'key' => url,
-        'time' => Time.now
-      ].to_json
+      # TODO: Gather permanent s3 link
+      "#{@conf['endpoint_adress']}/#{@conf['bucket_name']}/#{image_key}"
+      #-- link workaround
     rescue StandardError
       return Hash[
         'err' => true,
