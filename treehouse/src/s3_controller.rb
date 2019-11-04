@@ -47,6 +47,10 @@ class S3ImageStore
       puts 'Bucket does not exist'
       @s3.create_bucket(bucket: treehouse_bucket)
       puts "Created Bucket #{treehouse_bucket}"
+      @s3.put_bucket_acl({
+        acl: "public-read",
+        bucket: treehouse_bucket,
+      })
     end
     true
   end
@@ -54,15 +58,12 @@ class S3ImageStore
   def upload_image(image_name, image_data)
     image_key = "#{SecureRandom.hex}-#{image_name}"
     begin
-      # Set life to 200 years
       @s3.put_object(
         bucket: @conf['bucket_name'],
         key: image_key,
         body: image_data
       )
-      # TODO: Gather permanent s3 link
-      "#{@conf['endpoint_adress']}/#{@conf['bucket_name']}/#{image_key}"
-      #-- link workaround
+      image_key
     rescue StandardError
       return Hash[
         'err' => true,
@@ -73,16 +74,17 @@ class S3ImageStore
     end
   end
 
-  def get_image(image_key)
+  def get_image_url(image_key)
     begin
-      return @s3.get_object(
+      obj = @s3.get_object(
         bucket: @conf['bucket_name'],
         key: image_key
-      ).body.read
-    rescue StandardError
+      )
+      URI.parse(obj.presigned_url(:get))
+    rescue StandardError => e
       return Hash[
         'err' => true,
-        'msg' => "File not found with key #{image_key}",
+        'msg' => e,
         'key' => image_key,
         'time' => Time.now
       ].to_json

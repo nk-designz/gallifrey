@@ -9,7 +9,7 @@ class MetaDatabase
   def initialize
     @conf = read_conf('/etc/treehouse/config.yaml')['metadb']
     @conf.freeze
-    init_db
+    @mysql = init_db
   end
 
   def read_conf(conf_path)
@@ -18,27 +18,17 @@ class MetaDatabase
     )
   end
 
-  def query(query_string)
-    client = Mysql2::Client.new(
-      :host => @conf['endpoint_adress'],
-      :username => @conf['user'],
-      :password => @conf['password'],
-      :database => @conf['database']
-    )
-    client.query(query_string)
-  end
-
   def init_db
     client = Mysql2::Client.new(
         :host => @conf['endpoint_adress'],
         :username => @conf['user'],
         :password => @conf['password'],
         :database => @conf['database']
-      )
-      begin
-        client.query('SELECT * from posts;')
-      rescue StandardError
-        client.query("
+    )
+    begin
+      client.query('SELECT * from posts;')
+    rescue StandardError
+      client.query("
             create table posts(
             post_id VARCHAR(100) NOT NULL,
             heading VARCHAR(200) NOT NULL,
@@ -50,9 +40,15 @@ class MetaDatabase
             description VARCHAR(300),
             PRIMARY KEY ( post_id )
             );
-        ")
-      end
+    ")
+    end
+    client
   end
+
+  def query(query_string)
+    @mysql.query(query_string)
+  end
+
 
   def get(post_id, row_name)
     results = query("SELECT * FROM posts WHERE post_id = '#{post_id}';")

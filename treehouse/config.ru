@@ -9,4 +9,6 @@ at_exit do
 end
 
 require 'src/api_controller.rb'
+require 'rack/request'
+Rack::Utils.key_space_limit = 68719476736
 run App
