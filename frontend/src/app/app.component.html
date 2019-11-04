@@ -1,0 +1,36 @@
+
+<mat-toolbar color="primary">
+  <span class="login-icon" ><i class="header-icons material-icons md-light md-48">person</i></span>
+  <span class="fill-remaining-space"></span>
+  <a class="title" href="/" >{{title}}</a>
+  <span class="fill-remaining-space"></span>
+  <span class="share-icon" ><i class="header-icons material-icons md-light md-48">add_a_photo</i></span>
+</mat-toolbar>
+
+<mat-tab-group primary="" mat-stretch-tabs headerPosition="below">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>home</mat-icon>
+    </ng-template>
+    <ng-template matTabContent>
+      <app-home></app-home>
+    </ng-template>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>explore</mat-icon>
+    </ng-template>
+    <ng-template matTabContent>
+      <app-explore></app-explore>
+    </ng-template>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>group</mat-icon>
+    </ng-template>
+    <ng-template matTabContent>
+       <app-social></app-social>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
+<router-outlet></router-outlet>
