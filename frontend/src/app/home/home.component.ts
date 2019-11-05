@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TreehouseService } from './../treehouse.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.styl']
 })
 export class HomeComponent implements OnInit {
+  constructor(private treehouse: TreehouseService) { }
 
-  constructor() { }
+  public getPost() {
+    console.log(this.treehouse.getRandomPost());
+  }
 
   ngOnInit() {
   }
-
 }

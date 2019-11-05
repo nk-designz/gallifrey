@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { ExploreComponent } from './explore/explore.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SocialComponent } from './social/social.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SocialComponent } from './social/social.component';
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

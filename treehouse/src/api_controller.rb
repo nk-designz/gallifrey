@@ -2,13 +2,26 @@
 # frozen_string_literal: true
 
 require 'sinatra'
+require 'sinatra/cross_origin'
 require 'src/treehouse_controller.rb'
 
 # Sinatra Endpoint
 class App < Sinatra::Base
   configure do
     enable :logging
+    enable :cross_origin
     set :treehouse_instance, Treehouse.new
+  end
+
+  before do
+    response.headers['Access-Control-Allow-Origin'] = '*'
+  end
+
+  options "*" do
+    response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    200
   end
 
   get '/health' do
@@ -16,7 +29,7 @@ class App < Sinatra::Base
   end
 
   get '/post/:key' do |key|
-    content_type 'applcation/json'
+    content_type 'application/json'
     settings.treehouse_instance.get_post(key)
   end
 
@@ -27,12 +40,12 @@ class App < Sinatra::Base
   end
 
   get '/newest/:count' do |count|
-    content_type 'applcation/json'
+    content_type 'application/json'
     settings.treehouse_instance.newest_list(count.to_i)
   end
 
   get '/random/:count' do |count|
-    content_type 'applcation/json'
+    content_type 'application/json'
     settings.treehouse_instance.random_list(count.to_i)
   end
 end

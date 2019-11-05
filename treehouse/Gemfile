@@ -5,4 +5,5 @@ source 'https://rubygems.org' do
   gem 'rubysl-securerandom'
   gem 'rubysl-yaml'
   gem 'sinatra'
+  gem 'sinatra-cross_origin'
 end
