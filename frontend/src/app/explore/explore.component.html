@@ -1,2 +1,31 @@
-<p>explore works!</p>
-<img src="http://192.168.122.87:9000/gallifrey-images/f9bfbb93741eb938a602a5bb366a6289-821350d0a39e2ec6cecaccc532b68fe8GerhardM%C3%BCller?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20191104%2F%2Fs3%2Faws4_request&X-Amz-Date=20191104T154022Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=2c5d3f06cde4872a900d2127d609c2c93642f289b6ab36e4ab637f9ba2683748"/>
+ <div class="post" *ngFor="let post of posts">
+  <mat-card>
+    <mat-card-title>
+      {{post.heading}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{post.date}} - {{post.user}}
+    </mat-card-subtitle>
+    <img mat-card-image src="http://192.168.122.87:9000/gallifrey/{{post.image}}" alt="Could not get image, sry" />
+    <mat-card-content>
+      <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Description
+              </mat-panel-title>
+              <mat-panel-description>
+                 license: {{post.license}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            {{post.description}}
+          </mat-expansion-panel>
+      </mat-accordion>
+      <mat-card>
+        <mat-chip-list aria-orientation="vertically" >
+          <mat-chip *ngFor="let tag of post.tags" >{{tag}}</mat-chip>
+        </mat-chip-list>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

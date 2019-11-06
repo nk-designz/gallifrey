@@ -10,5 +10,5 @@ RUN bundle install
 ADD . $APP_ROOT
 
 EXPOSE 80
-HEALTHCHECK CMD curl --fail http://localhost:80/health || exit 1
+HEALTHCHECK CMD curl --fail http://localhost:80/random/1 || exit 1
 CMD ["bundle", "exec", "rackup", "config.ru", "-p", "80","-o", "0.0.0.0"]

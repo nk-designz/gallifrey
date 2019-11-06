@@ -20,12 +20,10 @@ class Post
 
   def to_json
     a = {
-      meta: {
-        user: @user,
-        date: @date,
-        license: @license,
-        tags: @tags
-      },
+      user: @user,
+      date: @date,
+      license: @license,
+      tags: @tags,
       id: @id,
       heading: @heading,
       image: @image,
@@ -37,9 +35,9 @@ class Post
     response = JSON.parse(response)
     Post.new(
       response['heading'],
-      response['meta']['user'],
-      response['meta']['license'],
-      response['meta']['tags'],
+      response['user'],
+      response['license'],
+      response['tags'],
       Time.now,
       Base64.decode64(response['image']),
       response['description']
