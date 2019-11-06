@@ -1,5 +1,9 @@
- <div class="post" *ngFor="let post of posts">
-  <mat-card>
+<mat-toolbar style="background-color: white;">
+  <h3>Explore</h3>
+</mat-toolbar>
+<div (scroll)="handleScroll($event)" style="overflow-y:scroll;height: 80vh;">
+ <div *ngFor="let post of posts">
+  <mat-card class="post">
     <mat-card-title>
       {{post.heading}}
     </mat-card-title>
@@ -28,4 +32,5 @@
       </mat-card>
     </mat-card-content>
   </mat-card>
+ </div>
 </div>

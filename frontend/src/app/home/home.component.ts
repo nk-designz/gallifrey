@@ -14,11 +14,15 @@ export class HomeComponent implements OnInit {
   posts = new Array<Post>();
 
   GetNewestPost() {
-    this.treehouse.GetNewestPostId().subscribe((data: {}) => {
-      this.treehouse.GetPost(data[0].post_id).subscribe((d: Post) => {
-        this.posts.push(d);
+    try {
+      this.treehouse.GetNewestPostId().subscribe((data: {}) => {
+        this.treehouse.GetPost(data[0].post_id).subscribe((d: Post) => {
+          this.posts.push(d);
+        });
       });
-    });
+    } catch (error) {
+      console.log('No con');
+    }
   }
 
   public getPost() {
