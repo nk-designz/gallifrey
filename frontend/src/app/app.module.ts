@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent, AppRootUploadDialogComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule, MatDividerModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material';
@@ -17,14 +17,17 @@ import { TreehouseService } from './treehouse.service';
 import { ScrollingModule} from '@angular/cdk/scrolling';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
+  entryComponents: [AppRootUploadDialogComponent],
   declarations: [
     AppComponent,
     HomeComponent,
     ExploreComponent,
     ProfileComponent,
-    SocialComponent
+    SocialComponent,
+    AppRootUploadDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ScrollingModule,
     MatDividerModule,
     MatChipsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
   ],
   providers: [TreehouseService],
   bootstrap: [AppComponent]

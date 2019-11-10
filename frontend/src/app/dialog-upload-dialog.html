@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>New Post</h1>
+<div mat-dialog-content>
+  <p>Select an Image</p>
+  <a href="javascript:void(0)"  >
+      Click to browse
+    </a>
+    Or Drag & Drop to upload your files
+    <input type="file"
+           #file
+           [multiple]="(maxFiles > 1)"
+           style="display:none" />
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
