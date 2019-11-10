@@ -1,34 +1,39 @@
 <mat-toolbar style="background-color: white;">
-  <h1>Home</h1>
-</mat-toolbar>
-
-<mat-card class="post" *ngFor="let post of posts">
-  <mat-card-title>
-     {{post.heading}}
-  </mat-card-title>
-  <mat-card-subtitle>
-      {{post.date}} - {{post.user}}
-  </mat-card-subtitle>
-  <img mat-card-image src="http://192.168.122.87:9000/gallifrey/{{post.image}}" alt="Could not get image, sry" />
-
-  <mat-card-content>
-    <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Description
-            </mat-panel-title>
-            <mat-panel-description>
-               license: {{post.license}}
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          {{post.description}}
-        </mat-expansion-panel>
-    </mat-accordion>
-    <mat-card>
-      <mat-chip-list aria-orientation="vertically" *ngFor="let tag of post.tags">
-          <mat-chip>{{tag}}</mat-chip>
-      </mat-chip-list>
+    <h3>Home</h3>
+  </mat-toolbar>
+  <div style="overflow-y:scroll;height: 80vh;">
+   <div *ngFor="let post of posts">
+    <mat-card class="post">
+      <mat-card-title>
+        {{post.heading}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{post.date}} - {{post.user}}
+      </mat-card-subtitle>
+      <!-- http://192.168.122.87:9000/gallifrey/{{post.image}} -->
+      <div class="post-img">
+          <img mat-card-image src="https://picsum.photos/1900/1900.jpg?random={{post.image}}" alt="Could not get image, sry" />
+      </div>
+      <mat-card-content>
+        <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Description
+                </mat-panel-title>
+                <mat-panel-description>
+                   license: {{post.license}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              {{post.description}}
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-card>
+          <mat-chip-list aria-orientation="vertically" >
+            <mat-chip *ngFor="let tag of post.tags" >{{tag}}</mat-chip>
+          </mat-chip-list>
+        </mat-card>
+      </mat-card-content>
     </mat-card>
-  </mat-card-content>
-</mat-card>
+   </div>
+  </div>

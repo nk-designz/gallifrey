@@ -14,9 +14,9 @@ export class ExploreComponent implements OnInit {
 
   posts = new Array<Post>();
 
-  lastScrollTop: number = 0;
-  direction: string = "";
-  scrollDur: number = 0;
+  lastScrollTop = 0;
+  direction = '';
+  scrollDur = 0;
 
   GetRandomPost() {
     this.treehouse.GetRandomPostId().subscribe((data: {}) => {

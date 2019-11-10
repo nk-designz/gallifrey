@@ -10,7 +10,10 @@
     <mat-card-subtitle>
       {{post.date}} - {{post.user}}
     </mat-card-subtitle>
-    <img mat-card-image src="http://192.168.122.87:9000/gallifrey/{{post.image}}" alt="Could not get image, sry" />
+    <!-- http://192.168.122.87:9000/gallifrey/{{post.image}} -->
+    <div class="post-img">
+        <img mat-card-image src="https://picsum.photos/1900/1900.jpg?random={{post.image}}" alt="Could not get image, sry" />
+    </div>
     <mat-card-content>
       <mat-accordion>
           <mat-expansion-panel>
