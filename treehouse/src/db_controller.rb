@@ -46,7 +46,12 @@ class MetaDatabase
   end
 
   def query(query_string)
-    @mysql.query(query_string)
+    begin
+      @mysql.query(query_string)
+    rescue StandardError => e
+      @mysql = init_db
+      puts e
+      query(query_string)
   end
 
 
