@@ -7,10 +7,9 @@
     Or Drag & Drop to upload your files
     <input type="file"
            #file
-           [multiple]="(maxFiles > 1)"
            style="display:none" />
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+  <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
 </div>
