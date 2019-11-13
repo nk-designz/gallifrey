@@ -52,6 +52,7 @@ class MetaDatabase
       @mysql = init_db
       puts e
       query(query_string)
+    end
   end
 
 

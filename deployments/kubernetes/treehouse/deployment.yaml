@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: treehouse
-        image: nicokahlert/gallifrey-frontend:latest
+        image: nicokahlert/gallifrey-treehouse:latest
         volumeMounts:
         - mountPath: /var/lib/treehouse
           name: treehouse-data
