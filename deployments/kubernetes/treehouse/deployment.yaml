@@ -23,8 +23,10 @@ spec:
           name: treehouse-data
         ports:
         - containerPort: 80
+        imagePullPolicy: Always
       volumes:
        - name: treehouse-data
          hostPath:
            path: /k8s/treehouse
            type: DirectoryOrCreate
+      
