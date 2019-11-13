@@ -13,7 +13,7 @@ export class TreehouseService {
 
   }
 
-  private baseurl = 'http://192.168.122.87:8080';
+  private baseurl = 'http://api.gallifrey.local';
 
   httpOptions = {
     headers: new HttpHeaders({
