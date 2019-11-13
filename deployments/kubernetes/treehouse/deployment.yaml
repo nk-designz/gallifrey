@@ -17,12 +17,11 @@ spec:
     spec:
       containers:
       - name: treehouse
-        image: registry.gallifrey.local/treehouse:latest
+        image: nicokahlert/gallifrey-frontend:latest
         volumeMounts:
         - mountPath: /var/lib/treehouse
           name: treehouse-data
         ports:
-        - port: 80
         - containerPort: 80
       volumes:
        - name: treehouse-data

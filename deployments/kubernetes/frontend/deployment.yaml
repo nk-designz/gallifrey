@@ -17,7 +17,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: registry.gallifrey.local/frontend:latest
+        image: nicokahlert/gallifrey-frontend:latest
         ports:
-        - port: 80
         - containerPort: 80
