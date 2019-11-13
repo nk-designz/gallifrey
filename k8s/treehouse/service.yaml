@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: gallifrey
+  name: treehouse-service
+spec:
+  selector:
+    app: treehouse
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

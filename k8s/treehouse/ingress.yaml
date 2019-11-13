@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: treehouse-ingress
+  namespace: gallifrey
+spec:
+  rules:
+  - host: api.gallifrey.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: treehouse-service
+          servicePort: 80
