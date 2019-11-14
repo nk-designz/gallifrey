@@ -27,3 +27,6 @@ And deploy:
 kubectl create -f /deployments/kubernetes/treehouse/
 kubectl create -f /deployments/kubernetes/frontend/
 ```
+# Caution:
+# this is in heavy development and any help will be really appreciated.
+# Thanks for your interest :D
