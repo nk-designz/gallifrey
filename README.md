@@ -1,6 +1,5 @@
-# gallifrey
-
-A cloudnative image-gallery. It runs on K8S or Docker as Webapp. Images will be stored in s3.
+# Gallifrey - the cloudnative image-gallery
+It runs on K8S or Docker as Webapp. Images will be stored in s3.
 
 # Screenshot
 ![webapp example screenshot](/assets/frontend.png)
@@ -27,6 +26,7 @@ And deploy:
 kubectl create -f /deployments/kubernetes/treehouse/
 kubectl create -f /deployments/kubernetes/frontend/
 ```
+
 # Caution:
-# this is in heavy development and any help will be really appreciated.
-# Thanks for your interest :D
+## this is in heavy development and any help will be really appreciated.
+## Thanks for your interest :D
