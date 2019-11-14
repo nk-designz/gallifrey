@@ -18,6 +18,7 @@ import { ScrollingModule} from '@angular/cdk/scrolling';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   entryComponents: [AppRootUploadDialogComponent],
@@ -42,7 +43,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatDividerModule,
     MatChipsModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule
   ],
   providers: [TreehouseService],
   bootstrap: [AppComponent]

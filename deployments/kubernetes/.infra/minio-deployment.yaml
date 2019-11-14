@@ -49,3 +49,18 @@ spec:
         hostPath:
           path: /k8s/minio
           type: DirectoryOrCreate
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: s3-ingress
+  namespace: gallifrey
+spec:
+  rules:
+  - host: s3.gallifrey.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: minio
+          servicePort: 9000

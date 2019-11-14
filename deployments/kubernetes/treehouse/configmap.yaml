@@ -6,14 +6,14 @@ metadata:
 data:
   config.yaml: |
     s3:
-      endpoint_adress: "http://minio.svc.gallifrey.cluster.local:9000"
+      endpoint_adress: "http://minio.gallifrey.svc.cluster.local:9000"
       access_key_id: "admin"
       secret_access_key: "start-123"
       force_path_style: true
       region: "EU-WEST"
       bucket_name: "gallifrey-images"
     metadb:
-      endpoint_adress: "mysql.svc.gallifrey.cluster.local"
+      endpoint_adress: "mysql.gallifrey.svc.cluster.local"
       user: "root"
       password: "start-123"
       database: "gallifrey"

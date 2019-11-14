@@ -19,14 +19,14 @@ spec:
       - name: treehouse
         image: nicokahlert/gallifrey-treehouse:latest
         volumeMounts:
-        - mountPath: /var/lib/treehouse
-          name: treehouse-data
+        - mountPath: /etc/treehouse
+          name: treehouse-config-vol
         ports:
         - containerPort: 80
         imagePullPolicy: Always
       volumes:
-       - name: treehouse-data
-         hostPath:
-           path: /k8s/treehouse
-           type: DirectoryOrCreate
+      - name: treehouse-config-vol
+        configMap:
+          name: treehouse-config
+
       
