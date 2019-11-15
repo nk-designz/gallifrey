@@ -19,6 +19,9 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
+import { GlobusComponent } from './globus/globus.component';
+import { UploadPostComponent } from './upload-post/upload-post.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   entryComponents: [AppRootUploadDialogComponent],
@@ -28,7 +31,9 @@ import {MatInputModule} from '@angular/material/input';
     ExploreComponent,
     ProfileComponent,
     SocialComponent,
-    AppRootUploadDialogComponent
+    AppRootUploadDialogComponent,
+    GlobusComponent,
+    UploadPostComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,10 @@ import {MatInputModule} from '@angular/material/input';
     MatChipsModule,
     MatExpansionModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    AgmCoreModule.forRoot({
+      apiKey: ''
+    })
   ],
   providers: [TreehouseService],
   bootstrap: [AppComponent]

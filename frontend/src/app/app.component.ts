@@ -30,8 +30,8 @@ export class AppComponent {
 }
 
 @Component({
-  selector: 'app-root-upload-dialog-component',
-  templateUrl: 'dialog-upload-dialog.html'
+  selector: 'app-upload-post-component',
+  template: '<app-upload-post></app-upload-post>'
 })
 export class AppRootUploadDialogComponent {
 
