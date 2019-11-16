@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TreehouseService } from './../treehouse.service';
-import { Post } from '../post';
+import { Post, PostListEntry } from '../post';
 import { HostListener, ChangeDetectorRef } from '@angular/core';
 
 @Component({
@@ -19,7 +19,7 @@ export class ExploreComponent implements OnInit {
   scrollDur = 0;
 
   GetRandomPost() {
-    this.treehouse.GetRandomPostId().subscribe((data: {}) => {
+    this.treehouse.GetRandomPostId().subscribe((data: Array<PostListEntry>) => {
       this.treehouse.GetPost(data[0].post_id).subscribe((d: Post) => {
         this.posts.push(d);
       });
@@ -28,7 +28,6 @@ export class ExploreComponent implements OnInit {
 
   public getPost() {
     this.GetRandomPost();
-    console.log(this.posts);
   }
 
 
@@ -39,7 +38,6 @@ export class ExploreComponent implements OnInit {
         this.GetRandomPost();
         this.cdr.detectChanges();
       }
-      console.log(this.scrollDur);
     }
 
   ngOnInit() {

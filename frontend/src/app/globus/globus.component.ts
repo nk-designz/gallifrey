@@ -18,8 +18,7 @@ export class GlobusComponent implements OnInit {
       window.navigator.geolocation.getCurrentPosition(
           position => {
               this.lat = position.coords.latitude,
-              this.lng = position.coords.longitude,
-                  console.log(position);
+              this.lng = position.coords.longitude;
           },
           error => {
               switch (error.code) {

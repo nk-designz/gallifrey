@@ -29,10 +29,9 @@ export class UploadPostComponent implements OnInit {
     this.post.license = license;
     this.post.tags = tags.split(' ');
     this.modalTitle = this.modalTitles[0];
-    
+
     try {
       this.treehouse.AddPost(this.post).subscribe((data: {}) => {
-        console.log(data);
         this.openSnackBar("You posted an image :D", "ok");
       });
     } catch(e) {

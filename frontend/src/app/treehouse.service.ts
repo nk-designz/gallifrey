@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Post } from './post';
+import { Post, PostListEntry } from './post';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -50,16 +50,16 @@ export class TreehouseService {
     );
   }
 
-  GetRandomPostId(): Observable<Array<string>> {
-    return this.http.get<Array<string>>(this.baseurl + '/random/1')
+  GetRandomPostId(): Observable<Array<PostListEntry>> {
+    return this.http.get<Array<PostListEntry>>(this.baseurl + '/random/1')
     .pipe(
       retry(1),
       catchError(this.errorHandl)
     );
   }
 
-  GetNewestPostId(): Observable<Array<string>> {
-    return this.http.get<Array<string>>(this.baseurl + '/newest/1')
+  GetNewestPostId(postNumber: number): Observable<Array<PostListEntry>> {
+    return this.http.get<Array<PostListEntry>>(this.baseurl + '/newest/' + postNumber)
     .pipe(
       retry(1),
       catchError(this.errorHandl)

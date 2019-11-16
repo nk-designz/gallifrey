@@ -2,6 +2,7 @@
     <h3>Home</h3>
   </mat-toolbar>
   <div style="overflow-y:scroll;height: 80vh;">
+    <button mat-button (click)="getPost()">Check</button>
    <div *ngFor="let post of posts">
     <mat-card class="post">
       <mat-card-title>

@@ -7,3 +7,7 @@ export class Post {
   image: string;
   heading: string;
 }
+
+export class PostListEntry {
+  post_id: string;
+}
