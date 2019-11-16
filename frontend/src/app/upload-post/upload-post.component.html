@@ -1,15 +1,64 @@
-<h1 mat-dialog-title>New Post</h1>
+<h1 mat-dialog-title>{{modalTitle}}</h1>
 <div mat-dialog-content>
-  <p>Select an Image</p>
-  <a href="javascript:void(0)"  >
-      Click to browse
-    </a>
-    Or Drag & Drop to upload your files
-    <input type="file"
-           #file
-           style="display:none" />
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
-</div>
+  <mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <div>
+          <div class="dropzone" allowedTypes="image/*" (postImageChangeEmiter)="postImageChange($event)" appUploadPostDropZone>
+              <div class="text-wrapper">
+                <div class="centered" >Drop your file here!</div>
+              </div>
+          </div>
+      </div>
+      <div>
+        <button mat-raised-button matStepperNext [disabled]="!this.post.image" (click)="modalTitle = modalTitles[1]" >Next</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <div class="post-forms" >
+        <mat-form-field>
+          <input maxlength="40" #postHeading matInput required placeholder="Heading">
+          <mat-hint align="end">{{postHeading.value?.length || 0}}/40</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea maxlength="500" #postDescription matInput required placeholder="Description"></textarea>
+          <mat-hint align="end">max. 500 Character</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input maxlength="50" #postLicense matInput required placeholder="License">
+            <mat-hint align="end">{{postLicense.value?.length || 0}}/50</mat-hint>
+          </mat-form-field>
+
+        <mat-form-field>
+          <input maxlength="200" #postTags matInput required placeholder="Tags">
+          <mat-hint align="end">{{postTags.value?.length || 0}}/200</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious (click)="modalTitle = modalTitles[0]" >Back</button>
+        <button mat-raised-button matStepperNext (click)="modalTitle = modalTitles[2]" >Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <div class="post-forms">
+        <mat-form-field>
+          <input maxlength="40" matInput readonly value="{{postHeading.value}}">
+        </mat-form-field>
+        <mat-form-field>
+            <textarea maxlength="500" matInput readonly value="{{postDescription.value}}"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <input maxlength="50" matInput readonly value="{{postLicense.value}}">
+        </mat-form-field>
+        <mat-form-field>
+            <input maxlength="200" matInput readonly value="{{postTags.value}}">
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious (click)="modalTitle = modalTitles[1]" >Back</button>
+        <button mat-raised-button [mat-dialog-close]="" cdkFocusInitial
+        (click)="uploadPost(postHeading.value, postDescription.value, postLicense.value, postTags.value)">Upload</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>

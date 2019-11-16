@@ -22,6 +22,11 @@ import {MatInputModule} from '@angular/material/input';
 import { GlobusComponent } from './globus/globus.component';
 import { UploadPostComponent } from './upload-post/upload-post.component';
 import { AgmCoreModule } from '@agm/core';
+import { MatButtonModule } from '@angular/material/button';
+import {MatStepperModule} from '@angular/material/stepper';
+import { UploadPostDirective } from './upload-post/upload-post.directive';
+import {MatListModule} from '@angular/material/list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   entryComponents: [AppRootUploadDialogComponent],
@@ -33,7 +38,8 @@ import { AgmCoreModule } from '@agm/core';
     SocialComponent,
     AppRootUploadDialogComponent,
     GlobusComponent,
-    UploadPostComponent
+    UploadPostComponent,
+    UploadPostDirective
   ],
   imports: [
     BrowserModule,
@@ -50,11 +56,15 @@ import { AgmCoreModule } from '@agm/core';
     MatExpansionModule,
     MatDialogModule,
     MatInputModule,
+    MatButtonModule,
+    MatStepperModule,
+    MatListModule,
+    MatSnackBarModule,
     AgmCoreModule.forRoot({
       apiKey: ''
     })
   ],
-  providers: [TreehouseService],
+  providers: [TreehouseService, UploadPostDirective],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

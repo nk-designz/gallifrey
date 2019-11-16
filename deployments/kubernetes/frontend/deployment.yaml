@@ -15,9 +15,10 @@ spec:
       labels:
         app: frontend
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
       - name: frontend
-        image: nicokahlert/gallifrey-frontend:latest
+        image: nicokahlert/gallifrey-frontend
         ports:
         - containerPort: 80
         imagePullPolicy: Always
