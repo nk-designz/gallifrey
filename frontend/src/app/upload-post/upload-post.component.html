@@ -1,9 +1,9 @@
 <h1 mat-dialog-title>{{modalTitle}}</h1>
 <div mat-dialog-content>
   <mat-horizontal-stepper [linear]="true" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
+    <mat-step [stepControl]="dropzone">
       <div>
-          <div class="dropzone" allowedTypes="image/*" (postImageChangeEmiter)="postImageChange($event)" appUploadPostDropZone>
+          <div class="dropzone" #dropzone allowedTypes="image/*" (postImageChangeEmiter)="postImageChange($event)" appUploadPostDropZone>
               <div class="text-wrapper">
                 <div class="centered" >Drop your file here!</div>
               </div>
@@ -13,9 +13,9 @@
         <button mat-raised-button matStepperNext [disabled]="!this.post.image" (click)="modalTitle = modalTitles[1]" >Next</button>
       </div>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
+    <mat-step [stepControl]="postHeading">
       <div class="post-forms" >
-        <mat-form-field>
+        <mat-form-field >
           <input maxlength="40" #postHeading matInput required placeholder="Heading">
           <mat-hint align="end">{{postHeading.value?.length || 0}}/40</mat-hint>
         </mat-form-field>
@@ -27,7 +27,7 @@
 
         <mat-form-field>
           <mat-label>Select an License</mat-label>
-          <mat-select [(value)]="postLicense">
+          <mat-select [(value)]="this.postLicense">
             <mat-option value="Unknown" >Unknown</mat-option>
             <mat-option value="RF">RM</mat-option>
             <mat-option value="RF">RF</mat-option>

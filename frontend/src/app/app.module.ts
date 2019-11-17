@@ -26,7 +26,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { UploadPostDirective } from './upload-post/upload-post.directive';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -64,7 +66,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatSelectModule,
     AgmCoreModule.forRoot({
       apiKey: ''
-    })
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [TreehouseService, UploadPostDirective],
   bootstrap: [AppComponent]

@@ -15,8 +15,8 @@ export class UploadPostDirective {
   constructor(private sanitizer: DomSanitizer) {
   }
 
-  @HostBinding('style.background') private background = '#eee';
-  @HostBinding('style.background-image') private backgroundImage;
+  @HostBinding('style.background') public background = '#eee';
+  @HostBinding('style.background-image') public backgroundImage;
 
   @HostListener('dragover', ['$event']) public onDragOver(evt) {
     evt.preventDefault();

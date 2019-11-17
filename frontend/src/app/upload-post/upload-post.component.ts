@@ -14,6 +14,7 @@ export class UploadPostComponent implements OnInit {
   post = new Post();
   modalTitles = ['Upload your Image', 'Tell us the Story', 'You are done now'];
   modalTitle = this.modalTitles[0];
+  postLicense: string;
 
   constructor(public UPD: UploadPostDirective, private treehouse: TreehouseService, private _snackBar: MatSnackBar) {}
 
