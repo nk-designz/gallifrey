@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent, AppRootUploadDialogComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,19 +13,21 @@ import { ProfileComponent } from './profile/profile.component';
 import { SocialComponent } from './social/social.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TreehouseService } from './treehouse.service';
-import { ScrollingModule} from '@angular/cdk/scrolling';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatInputModule} from '@angular/material/input';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 import { GlobusComponent } from './globus/globus.component';
 import { UploadPostComponent } from './upload-post/upload-post.component';
 import { AgmCoreModule } from '@agm/core';
 import { MatButtonModule } from '@angular/material/button';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 import { UploadPostDirective } from './upload-post/upload-post.directive';
-import {MatListModule} from '@angular/material/list';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatListModule } from '@angular/material/list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   entryComponents: [AppRootUploadDialogComponent],
@@ -60,6 +61,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatStepperModule,
     MatListModule,
     MatSnackBarModule,
+    MatSelectModule,
     AgmCoreModule.forRoot({
       apiKey: ''
     })

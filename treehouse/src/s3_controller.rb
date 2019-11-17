@@ -56,7 +56,7 @@ class S3ImageStore
   end
 
   def upload_image(image_name, image_data)
-    image_key = "#{SecureRandom.hex}-#{image_name}"
+    image_key = "public/#{SecureRandom.hex}-#{image_name}"
     begin
       @s3.put_object(
         bucket: @conf['bucket_name'],

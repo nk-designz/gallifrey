@@ -26,9 +26,16 @@
         </mat-form-field>
 
         <mat-form-field>
-            <input maxlength="50" #postLicense matInput required placeholder="License">
-            <mat-hint align="end">{{postLicense.value?.length || 0}}/50</mat-hint>
-          </mat-form-field>
+          <mat-label>Select an License</mat-label>
+          <mat-select [(value)]="postLicense">
+            <mat-option value="Unknown" >Unknown</mat-option>
+            <mat-option value="RF">RM</mat-option>
+            <mat-option value="RF">RF</mat-option>
+            <mat-option value="CC0-1.0">CC0-1.0</mat-option>
+            <mat-option value="CC-BY-4.0">CC-BY-4.0</mat-option>
+            <mat-option value="CC-BY-SA-4.0">CC-BY-SA-4.0</mat-option>
+          </mat-select>
+        </mat-form-field>
 
         <mat-form-field>
           <input maxlength="200" #postTags matInput required placeholder="Tags">
@@ -49,16 +56,16 @@
             <textarea maxlength="500" matInput readonly value="{{postDescription.value}}"></textarea>
         </mat-form-field>
         <mat-form-field>
-            <input maxlength="50" matInput readonly value="{{postLicense.value}}">
+            <input maxlength="50" matInput readonly value="{{postLicense}}">
         </mat-form-field>
-        <mat-form-field>
-            <input maxlength="200" matInput readonly value="{{postTags.value}}">
-        </mat-form-field>
+        <mat-chip-list ariaOrientation="horizontal">
+          <mat-chip *ngFor="let tag of postTags.value.split(' ')">{{tag}}</mat-chip>
+        </mat-chip-list>
       </div>
       <div>
         <button mat-button matStepperPrevious (click)="modalTitle = modalTitles[1]" >Back</button>
         <button mat-raised-button [mat-dialog-close]="" cdkFocusInitial
-        (click)="uploadPost(postHeading.value, postDescription.value, postLicense.value, postTags.value)">Upload</button>
+        (click)="uploadPost(postHeading.value, postDescription.value, postLicense, postTags.value)">Upload</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>
