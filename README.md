@@ -17,7 +17,8 @@ If you don't have the infrastructure you can build it via:
 ```bash
 kubectl create -f /deployments/kubernetes/.infra/
 ```
-then edit the configmap in /deployments/kubernetes/treehouse .
+then edit the configmap of treehouse.
+__(Ignore if you used the previous command)__
 ```bash
 vim /deployments/kubernetes/treehouse/configmap.yaml
 ```
