@@ -38,7 +38,7 @@ spec:
           value: start-123
         ports:
         - name: keycloak
-          containerPort: 8280
+          containerPort: 9990
           protocol: TCP
 ---
 apiVersion: extensions/v1beta1
@@ -54,4 +54,4 @@ spec:
       - path: /
         backend:
           serviceName: oauth-server
-          servicePort: 80
+          servicePort: auth
