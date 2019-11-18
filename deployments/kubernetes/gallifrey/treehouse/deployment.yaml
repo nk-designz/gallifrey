@@ -6,7 +6,7 @@ metadata:
   labels:
     app: treehouse
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: treehouse
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: treehouse
-        image: nicokahlert/gallifrey-treehouse:latest
+        image: nicokahlert/gallifrey-treehouse@sha256:3fe4e76bc3663a3820e818e5af110525bcc84fb3937c5e64b792190f8004e59e
         volumeMounts:
         - mountPath: /etc/treehouse
           name: treehouse-config-vol
