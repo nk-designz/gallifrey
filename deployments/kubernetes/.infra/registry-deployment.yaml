@@ -22,7 +22,7 @@ spec:
         - mountPath: /var/lib/registry
           name: registry-data
         ports:
-        - containerPort:  5000
+        - containerPort: 5000
       volumes:
        - name: registry-data
          hostPath:
