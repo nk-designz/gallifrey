@@ -36,6 +36,8 @@ spec:
           value: admin
         - name: KEYCLOAK_PASSWORD
           value: start-123 
+        - name: KEYCLOAK_FRONTEND_URL
+          value: auth.gallifrey.local
         ports:
         - name: keycloak
           containerPort: 8080
