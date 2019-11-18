@@ -5,9 +5,9 @@ metadata:
   namespace: gallifrey
 spec:
   ports:
-  - port: 8280
+  - port: 80
     name: auth
-    targetPort: auth
+    targetPort: keycloak
   selector:
     app: oauth
   clusterIP: None
