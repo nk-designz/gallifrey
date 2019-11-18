@@ -7,7 +7,7 @@ spec:
   ports:
   - port: 80
     name: auth
-    targetPort: keycloak
+    targetPort: oauth-port
   selector:
     app: oauth
   clusterIP: None
@@ -30,15 +30,10 @@ spec:
     spec:
       containers:
       - name: oauth-server
-        image: jboss/keycloak:2.4.0.Final
-        env:
-        - name: KEYCLOAK_USER
-          value: admin
-        - name: KEYCLOAK_PASSWORD
-          value: start-123
+        image: babelouest/glewlwyd
         ports:
-        - name: keycloak
-          containerPort: 9990
+        - name: oauth-port
+          containerPort: 4593
           protocol: TCP
 ---
 apiVersion: extensions/v1beta1
