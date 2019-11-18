@@ -40,6 +40,8 @@ spec:
           value: auth.gallifrey.local
         - name: KEYCLOAK_HOSTNAME
           value: keycloak.local 
+        - name: KEYCLOAK_HTTP_PORT
+          value: 8080
         ports:
         - name: keycloak
           containerPort: 8080
