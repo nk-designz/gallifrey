@@ -30,21 +30,16 @@ spec:
     spec:
       containers:
       - name: oauth-server
-        image: jboss/keycloak
+        image: jboss/keycloak:2.4.0.Final
         env:
         - name: KEYCLOAK_USER
           value: admin
         - name: KEYCLOAK_PASSWORD
-          value: start-123 
-        - name: KEYCLOAK_FRONTEND_URL
-          value: auth.gallifrey.local
-        - name: KEYCLOAK_HOSTNAME
-          value: keycloak.local 
-        - name: KEYCLOAK_HTTP_PORT
-          value: 8080
+          value: start-123
         ports:
         - name: keycloak
-          containerPort: 8080
+          containerPort: 8280
+          targetPort: 8080
           protocol: TCP
 ---
 apiVersion: extensions/v1beta1
