@@ -5,7 +5,7 @@ metadata:
   namespace: gallifrey
 spec:
   ports:
-  - port: 8080
+  - port: 8280
     name: auth
     targetPort: auth
   selector:
@@ -39,7 +39,6 @@ spec:
         ports:
         - name: keycloak
           containerPort: 8280
-          targetPort: 8080
           protocol: TCP
 ---
 apiVersion: extensions/v1beta1
