@@ -1,7 +1,7 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: treehouse
+  name: frontend
   namespace: gallifrey
 spec:
   scaleTargetRef:
