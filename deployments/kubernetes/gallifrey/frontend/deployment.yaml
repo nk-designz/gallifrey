@@ -6,7 +6,7 @@ metadata:
   labels:
     app: frontend
 spec:
-  replicas: 4
+  replicas: 3
   selector:
     matchLabels:
       app: frontend
@@ -18,7 +18,14 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: frontend
-        image: nicokahlert/gallifrey-frontend@sha256:be3e13de65582bd693258c5e5358c4108646ea0214ac624d35c21ab2c96ed6b6
+        image: nicokahlert/gallifrey-frontend@sha256:78c7d0aeaaac2fbb80acfff0e95b462e4e2e958b8b4e15de6b476ab53980c5d0
         ports:
         - containerPort: 80
         imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          request:
+            cpu: 20m
+            memory: 50Mi

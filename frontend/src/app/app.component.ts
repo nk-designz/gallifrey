@@ -19,12 +19,7 @@ export class AppComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AppRootUploadDialogComponent, {
-      width: '100vw',
-      data: {name: 'name', animal: 'test'}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      width: '100vw'
     });
   }
 }

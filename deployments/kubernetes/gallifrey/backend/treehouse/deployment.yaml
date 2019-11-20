@@ -6,7 +6,7 @@ metadata:
   labels:
     app: treehouse
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app: treehouse
@@ -24,6 +24,13 @@ spec:
         ports:
         - containerPort: 80
         imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 50m
+            memory: 50Mi
+          request:
+            cpu: 10m
+            memory: 10Mi
       volumes:
       - name: treehouse-config-vol
         configMap:
