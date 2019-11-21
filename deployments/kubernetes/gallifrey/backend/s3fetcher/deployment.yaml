@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: treehouse-deployment
+  name: s3fetcher-deployment
   namespace: gallifrey
   labels:
-    app: treehouse
+    app: s3fetcher
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: treehouse
+      app: s3fetcher
   template:
     metadata:
       labels:
-        app: treehouse
+        app: s3fetcher
     spec:
       containers:
-      - name: treehouse
-        image: nicokahlert/gallifrey-treehouse@sha256:3fe4e76bc3663a3820e818e5af110525bcc84fb3937c5e64b792190f8004e59e
+      - name: s3fetcher
+        image: nicokahlert/gallifrey-s3fetcher
         volumeMounts:
-        - mountPath: /etc/treehouse
-          name: treehouse-config-vol
+        - mountPath: /etc/s3fetcher
+          name: s3fetcher-config-vol
         ports:
         - containerPort: 80
         imagePullPolicy: Always
@@ -32,7 +32,7 @@ spec:
             cpu: 10m
             memory: 10Mi
       volumes:
-      - name: treehouse-config-vol
+      - name: s3fetcher-config-vol
         configMap:
           name: gallifrey-config
 

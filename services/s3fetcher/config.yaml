@@ -1,0 +1,7 @@
+s3:
+  endpoint_adress: "http://s3.gallifrey.local"
+  access_key_id: "admin"
+  secret_access_key: "start-123"
+  force_path_style: true
+  region: "EU-WEST"
+  bucket_name: "gallifrey-images"
