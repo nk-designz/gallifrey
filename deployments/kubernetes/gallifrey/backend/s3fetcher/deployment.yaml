@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: s3fetcher
-        image: nicokahlert/gallifrey-s3fetcher
+        image: nicokahlert/gallifrey-s3fetcher@sha256:2b4a584d8d9e7987e037131dc076a8aa2aa1ca2e19aa1fe4be5796f96c8f91b8
         volumeMounts:
         - mountPath: /etc/s3fetcher
           name: s3fetcher-config-vol
