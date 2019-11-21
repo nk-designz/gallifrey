@@ -29,6 +29,8 @@ class App < Sinatra::Base
   end
 
   get '/:key' do |key|
-    settings.s3_instance.get_image(key)
+    resp = settings.s3_instance.get_image(key)
+    content_type resp[0]
+    resp[1]
   end
 end

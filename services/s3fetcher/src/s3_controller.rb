@@ -29,9 +29,10 @@ class S3Controller
   end
 
   def get_image(image_key)
-    @s3.get_object(
+    resp = @s3.get_object(
       bucket: @conf['bucket_name'],
       key: 'public/' + image_key
-    ).read
+    )
+    [resp.content_type, resp.body.read]
   end
 end

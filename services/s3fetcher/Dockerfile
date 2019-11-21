@@ -1,5 +1,5 @@
 FROM ruby:alpine
-RUN apk update && apk upgrade && apk add curl build-base mysql-dev
+RUN apk update && apk upgrade && apk add curl build-base
 
 ENV APP_ROOT /var/www/docker-sinatra
 RUN mkdir -p $APP_ROOT
