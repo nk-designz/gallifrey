@@ -15,17 +15,21 @@ For deployment on a kubernetes you can use the YAMLs.
 For testing purposes [rancher's k3s](https://k3s.io) is really nice.
 If you don't have the infrastructure you can build it via:
 ```bash
-kubectl create -f /deployments/kubernetes/.infra/
+kubectl create -f /deployments/kubernetes/gallifrey/backend/.infra/
+```
+Create the namespace:
+```bash
+kubectl create -f /deployments/kubernetes/namespace.yaml
 ```
 then edit the configmap of treehouse.
 __(Ignore if you used the previous command)__
 ```bash
-vim /deployments/kubernetes/treehouse/configmap.yaml
+vim /deployments/kubernetes/gallifrey/backend/treehouse/configmap.yaml
 ```
 And deploy: 
 ```bash
-kubectl create -f /deployments/kubernetes/treehouse/
-kubectl create -f /deployments/kubernetes/frontend/
+kubectl create -f /deployments/kubernetes/gallifrey/backend/treehouse/
+kubectl create -f /deployments/kubernetes/gallifrey/frontend/
 ```
 
 # Caution:
