@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: treehouse
-        image: nicokahlert/gallifrey-treehouse@sha256:787d2ee66934a973a7a4089a2e466a9abf3e95cc0a0cb14acf48f1fcbb6b6efc
+        image: nicokahlert/gallifrey-treehouse@sha256:6191132f7f4a5f787f54857e0a1f1ab19d0dd8d0f254803e60f478aecc6ff2ac
         volumeMounts:
         - mountPath: /etc/treehouse
           name: treehouse-config-vol
