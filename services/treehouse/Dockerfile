@@ -1,11 +1,12 @@
 FROM ruby:alpine
-RUN apk update && apk upgrade && apk add curl build-base mysql-dev
+RUN apk update && apk upgrade && apk add curl build-base mysql-dev libmagic
 
 ENV APP_ROOT /var/www/docker-sinatra
 RUN mkdir -p $APP_ROOT
 WORKDIR $APP_ROOT
 ADD Gemfile* $APP_ROOT/
 ADD config.yaml /etc/treehouse/config.yaml
+RUN echo 'gem: --no-document' >> ~/.gemrc
 RUN bundle install
 ADD . $APP_ROOT
 

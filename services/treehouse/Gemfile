@@ -1,8 +1,8 @@
 source 'https://rubygems.org' do
   gem 'aws-sdk-s3'
   gem 'json'
-  gem 'mimemagic'
   gem 'mysql2'
+  gem 'ruby-filemagic'
   gem 'rubysl-securerandom'
   gem 'rubysl-yaml'
   gem 'sinatra'

@@ -9,13 +9,14 @@ require 'aws-sdk-s3'
 require 'json'
 require 'securerandom'
 require 'yaml'
-require 'mimemagic'
+require 'filemagic'
 
 # S3 Logic
 class S3ImageStore
   def initialize
     @conf = read_conf('/etc/treehouse/config.yaml')['s3']
     @conf.freeze
+    @mime_detector = FileMagic.new(FileMagic::MAGIC_MIME)
     @s3 = init_client
     init_bucket
   end
@@ -49,8 +50,8 @@ class S3ImageStore
       @s3.create_bucket(bucket: treehouse_bucket)
       puts "Created Bucket #{treehouse_bucket}"
       @s3.put_bucket_acl({
-        acl: 'public-read',
-        bucket: treehouse_bucket,
+        acl:  'public-read',
+        bucket:  treehouse_bucket,
       })
     end
     true
@@ -62,7 +63,7 @@ class S3ImageStore
       bucket: @conf['bucket_name'],
       key: image_key,
       body: image_data,
-      content_type: MimeMagic.by_magic(image_data).type
+      content_type: @mime_detector.buffer(image_data).split(';')[0]
     )
     image_key
   end
