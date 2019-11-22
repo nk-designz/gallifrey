@@ -9,7 +9,7 @@ It runs on K8S or Docker as Webapp. Images will be stored in s3.
 ![webapp example screenshot](/assets/frontend.png)
 
 # Releases
-This app is currently in development and far from usable.
+This app is currently in development and far from ready.
 But the newest Images are available on Dockerhub:
 - docker pull nicokahlert/gallifrey-frontend:latest
 - docker pull nicokahlert/gallifrey-treehouse:latest
@@ -66,5 +66,5 @@ Go to your favorite browser at http://gallifrey.local
 # Architecture
 ![screenshot_of_deploynemt_visualisation](/assets/arch.png)
 # Caution:
-this is in heavy development and any help will be really appreciated.
+this project is in heavy development and any help will be really appreciated.
 Thanks for your interest :D
