@@ -52,6 +52,10 @@ And deploy:
 kubectl create -f /deployments/kubernetes/gallifrey/backend/treehouse/
 kubectl create -f /deployments/kubernetes/gallifrey/frontend/
 ```
+At last we need to point these DNS names to your cluster:
+- gallifrey.local
+- api.gallifrey.local
+- s3.gallifrey.local
 
 # Caution:
 ## this is in heavy development and any help will be really appreciated.
