@@ -58,23 +58,13 @@ class S3ImageStore
 
   def upload_image(image_name, image_data)
     image_key = "public/#{SecureRandom.hex}-#{image_name}"
-    begin
-      @s3.put_object(
-        bucket: @conf['bucket_name'],
-        key: image_key,
-        body: image_data,
-        content_type: MimeMagic.by_magic(image_data).type
-      )
-      image_key
-    rescue StandardError => e
-      puts Hash[
-        'err' => 'File not uploaded',
-        'msg' => e,
-        'key' => image_key,
-        'time' => Time.now
-      ].to_json
-      exit
-    end
+    @s3.put_object(
+      bucket: @conf['bucket_name'],
+      key: image_key,
+      body: image_data,
+      content_type: MimeMagic.by_magic(image_data).type
+    )
+    image_key
   end
 
   def get_image_url(image_key)
