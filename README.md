@@ -1,3 +1,4 @@
+![logo](/assets/logo.svg)
 # Gallifrey - the cloudnative image-gallery
 It runs on K8S or Docker as Webapp. Images will be stored in s3.
 
@@ -57,7 +58,7 @@ At last we need to point these DNS names to your cluster:
 - api.gallifrey.local
 - s3.gallifrey.local
 ## Access your deployment
-Go to your favorite browser at [http://gallifrey.local](http://gallifrey.local)
+Go to your favorite browser at http://gallifrey.local
 
 # Architecture
 ![screenshot_of_deploynemt_visualisation](/assets/arch.png)
