@@ -19,7 +19,7 @@ export class UploadPostComponent implements OnInit {
   constructor(public UPD: UploadPostDirective, private treehouse: TreehouseService, private _snackBar: MatSnackBar) {}
 
   postImageChange(postImage: string) {
-    this.post.image = postImage;
+    this.post.image = postImage.split(',')[1];
   }
 
   public uploadPost(heading: string, description: string, license: string, tags: string) {
@@ -30,6 +30,7 @@ export class UploadPostComponent implements OnInit {
     this.post.license = license;
     this.post.tags = tags.split(' ');
     this.modalTitle = this.modalTitles[0];
+    console.log(this.post.image);
 
     try {
       this.treehouse.AddPost(this.post).subscribe((data: {}) => {
