@@ -13,13 +13,13 @@ But the newest Images are available on Dockerhub:
 # Deployment
 For deployment on a kubernetes you can use the YAMLs.
 For testing purposes [rancher's k3s](https://k3s.io) is really nice.
-If you don't have the infrastructure you can build it via:
-```bash
-kubectl create -f /deployments/kubernetes/gallifrey/backend/.infra/
-```
 Create the namespace:
 ```bash
 kubectl create -f /deployments/kubernetes/namespace.yaml
+```
+If you don't have the infrastructure you can build it via:
+```bash
+kubectl create -f /deployments/kubernetes/gallifrey/backend/.infra/
 ```
 then edit the configmap of treehouse.
 __(Ignore if you used the previous command)__
