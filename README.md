@@ -56,7 +56,8 @@ At last we need to point these DNS names to your cluster:
 - gallifrey.local
 - api.gallifrey.local
 - s3.gallifrey.local
-
+## Access your deployment
+Go to your favorite browser at [http://gallifrey.local](http//:gallifrey.local)
 # Caution:
-## this is in heavy development and any help will be really appreciated.
-## Thanks for your interest :D
+this is in heavy development and any help will be really appreciated.
+Thanks for your interest :D
