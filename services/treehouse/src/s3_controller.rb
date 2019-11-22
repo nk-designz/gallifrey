@@ -9,6 +9,7 @@ require 'aws-sdk-s3'
 require 'json'
 require 'securerandom'
 require 'yaml'
+require 'mimemagic'
 
 # S3 Logic
 class S3ImageStore
@@ -61,7 +62,8 @@ class S3ImageStore
       @s3.put_object(
         bucket: @conf['bucket_name'],
         key: image_key,
-        body: image_data
+        body: image_data,
+        content_type: MimeMagic.by_magic(image_data).type
       )
       image_key
     rescue StandardError
