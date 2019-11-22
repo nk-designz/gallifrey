@@ -2,6 +2,8 @@
 # Gallifrey - the cloudnative image-gallery
 It runs on K8S or Docker as Webapp. Images will be stored in s3.
 
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/nicokahlert/gallifrey-frontend?style=flat-square&label=Frontend%20Container%20build%20status)
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/nicokahlert/gallifrey-treehouse?label=Treehouse%20Container%20build%20status&style=flat-square)
 # Screenshot
 ![webapp example screenshot](/assets/frontend.png)
 
