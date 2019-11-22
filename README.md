@@ -26,6 +26,27 @@ __(Ignore if you used the previous command)__
 ```bash
 vim /deployments/kubernetes/gallifrey/backend/treehouse/configmap.yaml
 ```
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gallifrey-config
+  namespace: gallifrey
+data:
+  config.yaml: |
+    s3:
+      endpoint_adress: "<s3_endpoint_address>"
+      access_key_id: "<access_key_id>"
+      secret_access_key: "<access_key>"
+      force_path_style: true
+      region: "<region>"
+      bucket_name: "<bucket_name>"
+    metadb:
+      endpoint_adress: "<mysql_address>"
+      user: "<mysql_user>"
+      password: "<mysql_user_password>"
+      database: "<mysql_database>"
+```
 And deploy: 
 ```bash
 kubectl create -f /deployments/kubernetes/gallifrey/backend/treehouse/
