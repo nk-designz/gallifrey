@@ -66,13 +66,14 @@ class S3ImageStore
         content_type: MimeMagic.by_magic(image_data).type
       )
       image_key
-    rescue StandardError
-      return Hash[
-        'err' => true,
-        'msg' => 'File not uploaded',
+    rescue StandardError => e
+      puts Hash[
+        'err' => 'File not uploaded',
+        'msg' => e,
         'key' => image_key,
         'time' => Time.now
       ].to_json
+      exit
     end
   end
 
