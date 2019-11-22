@@ -19,7 +19,13 @@ export class HomeComponent implements OnInit {
       this.treehouse.GetNewestPostId(10).subscribe((data: Array<PostListEntry>) => {
         for(const dt of data) {
           this.treehouse.GetPost(dt.post_id).subscribe((d: Post) => {
-            if (!this.posts.includes(d)) {
+            let i = 0;
+            for( const post of this.posts ) {
+              if( post.image === d.image ) {
+                i++;
+              }
+            }
+            if (i === 0) {
               this.posts.unshift(d);
             }
           });
@@ -36,6 +42,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.GetNewestPost();
+    setInterval(() => {
+      this.getPost();
+    }, 15000);
   }
 }

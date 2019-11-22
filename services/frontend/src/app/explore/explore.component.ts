@@ -21,7 +21,15 @@ export class ExploreComponent implements OnInit {
   GetRandomPost() {
     this.treehouse.GetRandomPostId().subscribe((data: Array<PostListEntry>) => {
       this.treehouse.GetPost(data[0].post_id).subscribe((d: Post) => {
-        this.posts.push(d);
+        let i = 0;
+        for( const post of this.posts ) {
+          if( post.image === d.image ) {
+            i++;
+          }
+        }
+        if (i === 0) {
+          this.posts.push(d);
+        }
       });
     });
   }
