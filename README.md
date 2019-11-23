@@ -30,6 +30,7 @@ __(Ignore if you used the previous command)__
 ```bash
 vim /deployments/kubernetes/gallifrey/backend/treehouse/configmap.yaml
 ```
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
