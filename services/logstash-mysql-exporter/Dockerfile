@@ -8,3 +8,5 @@ RUN rm mysql-connector-java-8.0.18.tar.gz
 
 FROM logstash:6.8.5
 COPY --from=fetcher /opt/logstash/mysql-connector-java-8.0.18 /opt
+ADD ./logstash.conf /usr/share/logstash/pipeline/logstash.conf
+ADD ./logstash.yaml /usr/share/logstash/config/logstash.yml
