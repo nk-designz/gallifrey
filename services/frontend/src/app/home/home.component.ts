@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getPost();
     setInterval(() => {
       this.getPost();
     }, 15000);

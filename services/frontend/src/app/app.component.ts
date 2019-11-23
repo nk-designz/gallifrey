@@ -1,5 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { JwksValidationHandler } from 'angular-oauth2-oidc';
+import { authConfig } from './auth.config';
 
 export interface DialogData {
   image: string;
@@ -14,13 +17,23 @@ export interface DialogData {
 })
 export class AppComponent {
   title = 'Gallifrey';
+  public identityClaims: any;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private oauthService: OAuthService) {
+    this.configure();
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AppRootUploadDialogComponent, {
       width: '100vw'
     });
+  }
+
+  private configure() {
+    this.oauthService.configure(authConfig);
+    this.oauthService.tokenValidationHandler = new JwksValidationHandler();
+    this.oauthService.loadDiscoveryDocumentAndLogin();
+    this.identityClaims = this.oauthService.getIdentityClaims();
   }
 }
 

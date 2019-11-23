@@ -29,6 +29,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 
 @NgModule({
@@ -66,6 +67,12 @@ import { environment } from '../environments/environment';
     MatSelectModule,
     AgmCoreModule.forRoot({
       apiKey: ''
+    }),
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: ['http://api.gallifrey.local'],
+        sendAccessToken: true
+      }
     }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
