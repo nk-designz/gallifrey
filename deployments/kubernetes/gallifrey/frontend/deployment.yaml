@@ -18,7 +18,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: frontend
-        image: nicokahlert/gallifrey-frontend@sha256:66a89f9ec0bf683b15ca9c46fd51d037e09d51cf97274771fe4c5dd9684176ac
+        image: nicokahlert/gallifrey-frontend@sha256:0e6e69b217db0aa934454cce883df69772fef4b6faa791bd2cffd670a9eca3ec
         ports:
         - containerPort: 80
         imagePullPolicy: Always

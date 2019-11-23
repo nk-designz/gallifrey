@@ -41,6 +41,18 @@ spec:
           mountPath: /var/lib/mysql
       volumes:
       - name: mysql-persistent-storage
-        hostPath:
-          path: /k8s/mysql
-          type: DirectoryOrCreate
+        persistentVolumeClaim:
+          claimName: gallifrey-sql-claim
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+   namespace: gallifrey
+   name: gallifrey-sql-claim
+spec:
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

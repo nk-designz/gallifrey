@@ -46,9 +46,8 @@ spec:
           mountPath: "/storage"
       volumes:
       - name: minio-persistent-storage
-        hostPath:
-          path: /k8s/minio
-          type: DirectoryOrCreate
+        persistentVolumeClaim:
+          claimName: s3-claim
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -64,3 +63,16 @@ spec:
         backend:
           serviceName: minio
           servicePort: 9000
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+   namespace: gallifrey
+   name: s3-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 1Gi

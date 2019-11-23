@@ -10,5 +10,5 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: keycloak-1574510254-http
+          serviceName: keycloak-http
           servicePort: http
