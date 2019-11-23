@@ -4,10 +4,11 @@ metadata:
   namespace: gallifrey
   name: logstash
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app: logstash
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -15,7 +16,19 @@ spec:
     spec:
       containers:
       - name: logstash
+        # Pulls the default logstash image from Docker Hub
         image: nicokahlert/gallifrey-logstash-mysql-exporter
         args:
         - -f
         - /usr/share/logstash/pipeline/logstash.conf
+        resources:
+          limits:
+            cpu: 50m
+            memory: 50Mi
+          requests:
+            cpu: 10m
+            memory: 10Mi
+        ports:
+        - name: logstash
+          containerPort: 5044
+          protocol: TCP
