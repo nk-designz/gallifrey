@@ -21,6 +21,18 @@ Create the namespace:
 ```bash
 kubectl create -f /deployments/kubernetes/namespace.yaml
 ```
+Deploy the Authprovider, for example RedHat's Keycloak:
+```bash
+helm repo add codecentric https://codecentric.github.io/helm-charts
+helm install --name keycloak codecentric/keycloak \
+  --set keycloak.image.tag=6.0.1 \
+  --set keycloak.replicas=3 \
+  --set keycloak.username=admin \
+  --set keycloak.password=admin \
+  --set keycloak.persistence.deployPostgres=true \
+  --set keycloak.persistence.dbVendor=postgres \
+  --namespace keycloak
+```
 If you don't have the infrastructure you can build it via:
 ```bash
 kubectl create -f /deployments/kubernetes/gallifrey/backend/.infra/
