@@ -1,0 +1,82 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  namespace: gallifrey
+  name: logstash
+spec:
+  selector:
+    matchLabels:
+      app: logstash
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: logstash
+    spec:
+      containers:
+      - name: logstash
+        # Pulls the default logstash image from Docker Hub
+        image: nicokahlert/gallifrey-logstash-mysql-exporter
+        args:
+        - -f
+        - /usr/share/logstash/pipeline/logstash.conf
+        resources:
+          limits:
+            cpu: 50m
+            memory: 50Mi
+          requests:
+            cpu: 10m
+            memory: 10Mi
+        ports:
+        - name: logstash
+          containerPort: 5044
+          protocol: TCP
+        volumeMounts:
+        - name: logstash-persistent-storage # must match the volume name, above
+          mountPath: /usr/share/logstash/config/logstash.yml
+          subPath: logstash.yml
+          readOnly: true
+        - name: pipeline
+          mountPath: /usr/share/logstash/pipeline
+          readOnly: true
+      volumes:
+      - name: logstash-persistent-storage
+        persistentVolumeClaim:
+          configMap: logstash-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logstash-config
+  namespace: gallifrey
+data:
+  logstash.conf: |-
+    input {
+      jdbc {
+        jdbc_driver_library => "opt\mysql-connector-java-8.0.18.jar"
+        jdbc_driver_class => "com.mysql.jdbc.Driver"
+        jdbc_connection_string => "jdbc:mysql://mysql.svc.cluster.local:3306/gallifrey"
+        jdbc_user => root
+        jdbc_password => start-123
+        tracking_column => "date"
+        use_column_value =>true
+        statement => "SELECT * FROM gallifrey.posts where date >:sql_last_value;"
+        schedule  => " * * * * * *"
+      }
+    }
+    output {
+      elasticsearch {
+        document_id => "%{id}"
+        document_type => "doc"
+        index => "posts"
+        hosts => ["http://elasticsearch.svc.cluster.local:9200"]
+      }
+      stdout  {
+        codec => rubydebug
+      }
+    }
+  logstash.yml: |-
+    http.host: "0.0.0.0"
+    path.config: /usr/share/logstash/pipeline
+    xpack.monitoring.enabled: false
