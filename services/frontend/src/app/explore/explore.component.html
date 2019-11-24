@@ -1,10 +1,9 @@
 <mat-toolbar style="background-color: white;">
   <h3>Explore</h3>
   <span class="fill-remaining-space"></span>
-  <mat-form-field class="search-form-field" appearance="standard">
-    <input matInput type="search" placeholder="Dig for gold" >
+  <button mat-button (click)="openSearchBox()">
     <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
+  </button>
 </mat-toolbar>
 <div (scroll)="handleScroll($event)" style="overflow-y:scroll;height: 80vh;">
  <div *ngFor="let post of posts">
@@ -15,7 +14,6 @@
     <mat-card-subtitle>
       {{post.date}} - {{post.user}}
     </mat-card-subtitle>
-    <!-- http://192.168.122.87:9000/gallifrey/{{post.image}} -->
     <div class="post-img">
         <img mat-card-image src="http://s3.gallifrey.local/gallifrey-images/{{post.image}}" alt="Could not get image, sry" />
     </div>

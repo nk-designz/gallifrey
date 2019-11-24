@@ -17,7 +17,7 @@ spec:
       containers:
       - name: logstash
         # Pulls the default logstash image from Docker Hub
-        image: nicokahlert/gallifrey-logstash-mysql-exporter@sha256:e95690a67f7e748eccf15e2a6a802610f166ce7159f85c0ab3621d7f38ff7b0d
+        image: nicokahlert/gallifrey-logstash-mysql-exporter@sha256:5688665e93214efb97e93c33d271c454613b87ab7088123e015d02a720ac3c98
         args:
         - -f
         - /usr/share/logstash/pipeline/logstash.conf

@@ -30,10 +30,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { SearchBoxComponent } from './search-box/search-box.component';
 
 
 @NgModule({
-  entryComponents: [AppRootUploadDialogComponent],
+  entryComponents: [
+    AppRootUploadDialogComponent,
+    SearchBoxComponent
+  ],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -43,7 +47,8 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     AppRootUploadDialogComponent,
     GlobusComponent,
     UploadPostComponent,
-    UploadPostDirective
+    UploadPostDirective,
+    SearchBoxComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,17 @@
 <mat-toolbar class="post" style="background-color: white;" >
   <h1>Social</h1>
 </mat-toolbar>
-<h1 *ngIf="name" >Welcome back, {{name}}!</h1>
+<mat-card>
+  <mat-card-title *ngIf="name">
+    Welcome back, {{name}}!
+  </mat-card-title>
+  <mat-card-content>
+    <a>edit Profile</a>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>
+    Friends
+  </mat-card-title>
+</mat-card>
+

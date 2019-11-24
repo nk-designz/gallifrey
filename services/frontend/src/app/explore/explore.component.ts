@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TreehouseService } from './../treehouse.service';
 import { Post, PostListEntry } from '../post';
 import { HostListener, ChangeDetectorRef } from '@angular/core';
+import {MatDialog } from '@angular/material/dialog';
+import { SearchBoxComponent } from '../search-box/search-box.component';
 
 @Component({
   selector: 'app-explore',
@@ -10,9 +12,10 @@ import { HostListener, ChangeDetectorRef } from '@angular/core';
 })
 export class ExploreComponent implements OnInit {
 
-  constructor(private treehouse: TreehouseService, private cdr: ChangeDetectorRef) { }
+  constructor(private treehouse: TreehouseService, private cdr: ChangeDetectorRef, public dialog: MatDialog) { }
 
   posts = new Array<Post>();
+  searchQuery: string;
 
   lastScrollTop = 0;
   direction = '';
@@ -40,13 +43,21 @@ export class ExploreComponent implements OnInit {
 
 
   @HostListener('window:scroll', ['$event'])
-    handleScroll($event){
+    handleScroll($event) {
       this.scrollDur++;
       if(this.scrollDur % 12 === 0) {
         this.GetRandomPost();
         this.cdr.detectChanges();
       }
     }
+
+  public openSearchBox() {
+    const searchBoxDialogRef = this.dialog.open(SearchBoxComponent, {
+    });
+    searchBoxDialogRef.afterClosed().subscribe(result => {
+      this.searchQuery = result;
+    });
+  }
 
   ngOnInit() {
     for (let i of Array<number>(4)) {
