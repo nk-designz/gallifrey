@@ -10,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './home/home.component';
 import { ExploreComponent } from './explore/explore.component';
 import { ProfileComponent } from './profile/profile.component';
-import { SocialComponent } from './social/social.component';
+import { SocialComponent, SocialOptionsDialogComponent } from './social/social.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TreehouseService } from './treehouse.service';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -31,12 +31,15 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { SearchBoxComponent } from './search-box/search-box.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import {MatMenuModule, MatMenu} from '@angular/material/menu';
 
 
 @NgModule({
   entryComponents: [
     AppRootUploadDialogComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    SocialOptionsDialogComponent
   ],
   declarations: [
     AppComponent,
@@ -48,7 +51,8 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     GlobusComponent,
     UploadPostComponent,
     UploadPostDirective,
-    SearchBoxComponent
+    SearchBoxComponent,
+    SocialOptionsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +74,8 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     MatListModule,
     MatSnackBarModule,
     MatSelectModule,
+    MatBottomSheetModule,
+    MatMenuModule,
     AgmCoreModule.forRoot({
       apiKey: ''
     }),
