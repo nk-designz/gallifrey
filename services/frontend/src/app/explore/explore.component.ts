@@ -14,19 +14,16 @@ export class ExploreComponent implements OnInit {
 
   constructor(private treehouse: TreehouseService, private cdr: ChangeDetectorRef, public dialog: MatDialog) { }
 
+  oldScroll: number;
   posts = new Array<Post>();
   searchQuery: string;
-
-  lastScrollTop = 0;
-  direction = '';
-  scrollDur = 0;
 
   GetRandomPost() {
     this.treehouse.GetRandomPostId().subscribe((data: Array<PostListEntry>) => {
       this.treehouse.GetPost(data[0].post_id).subscribe((d: Post) => {
         let i = 0;
-        for( const post of this.posts ) {
-          if( post.image === d.image ) {
+        for ( const post of this.posts ) {
+          if ( post.image === d.image ) {
             i++;
           }
         }
@@ -43,13 +40,13 @@ export class ExploreComponent implements OnInit {
 
 
   @HostListener('window:scroll', ['$event'])
-    handleScroll($event) {
-      this.scrollDur++;
-      if(this.scrollDur % 12 === 0) {
-        this.GetRandomPost();
-        this.cdr.detectChanges();
-      }
+  handleScroll($event) {
+    if ($event.target.scrollTop % 30 === 0 && this.oldScroll < $event.target.scrollTop) {
+      this.GetRandomPost();
+      this.cdr.detectChanges();
     }
+    this.oldScroll = $event.target.scrollTop;
+  }
 
   public openSearchBox() {
     const searchBoxDialogRef = this.dialog.open(SearchBoxComponent, {

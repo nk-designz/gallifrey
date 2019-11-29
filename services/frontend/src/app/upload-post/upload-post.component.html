@@ -59,7 +59,7 @@
             <input maxlength="50" matInput readonly value="{{postLicense}}">
         </mat-form-field>
         <mat-chip-list ariaOrientation="horizontal">
-          <mat-chip *ngFor="let tag of postTags.value.split(' ')">{{tag}}</mat-chip>
+          <mat-chip *ngFor="let tag of postTags.value.split(' #')">{{tag}}</mat-chip>
         </mat-chip-list>
       </div>
       <div>

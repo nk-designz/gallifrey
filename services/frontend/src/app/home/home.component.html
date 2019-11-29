@@ -1,7 +1,7 @@
 <mat-toolbar style="background-color: white;">
     <h3>Home</h3>
   </mat-toolbar>
-  <div style="overflow-y:scroll;height: 80vh;">
+  <div (scroll)="handleScroll($event)" style="overflow-y:scroll;height: 82.6vh;">
    <div *ngFor="let post of posts">
     <mat-card class="post">
       <mat-card-title>

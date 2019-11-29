@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, HostListener } from '@angular/core';
 import { TreehouseService } from './../treehouse.service';
 import { Post, PostListEntry } from '../post';
 
@@ -11,6 +11,7 @@ import { Post, PostListEntry } from '../post';
 export class HomeComponent implements OnInit {
   constructor(private treehouse: TreehouseService, private cdr: ChangeDetectorRef) { }
 
+  oldScroll: number;
   sub: any;
   posts = new Array<Post>();
 
@@ -40,6 +41,18 @@ export class HomeComponent implements OnInit {
     this.GetNewestPost();
     this.cdr.detectChanges();
   }
+
+  @HostListener('window:scroll', ['$event'])
+    handleScroll($event) {
+      const tracker = $event.target;
+      const limit = tracker.scrollHeight - tracker.clientHeight;
+      if (tracker.scrollTop >= limit - 500 && this.oldScroll < tracker.scrollTop) {
+        const datePostLog = this.posts[this.posts.length - 1].date;
+        console.log(datePostLog);
+        this.cdr.detectChanges();
+      }
+      this.oldScroll = tracker.scrollTop;
+    }
 
   ngOnInit() {
     this.getPost();
