@@ -1,0 +1,12 @@
+s3:
+  endpoint_adress: "http://192.168.122.87:9000"
+  access_key_id: "admin"
+  secret_access_key: "start-123"
+  force_path_style: true
+  region: "EU-WEST"
+  bucket_name: "gallifrey-images"
+metadb:
+  endpoint_adress: "192.168.122.87"
+  user: "root"
+  password: "start-123"
+  database: "gallifrey"

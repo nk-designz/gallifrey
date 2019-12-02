@@ -7,7 +7,7 @@ require 'yaml'
 # interface to the Metadata Database
 class MetaDatabase
   def initialize
-    @conf = read_conf('/etc/treehouse/config.yaml')['metadb']
+    @conf = read_conf('/etc/gallifrey/config.yaml')['metadb']
     @conf.freeze
     @mysql = init_db
   end

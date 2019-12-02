@@ -14,7 +14,7 @@ require 'filemagic'
 # S3 Logic
 class S3ImageStore
   def initialize
-    @conf = read_conf('/etc/treehouse/config.yaml')['s3']
+    @conf = read_conf('/etc/gallifrey/config.yaml')['s3']
     @conf.freeze
     @mime_detector = FileMagic.new(FileMagic::MAGIC_MIME)
     @s3 = init_client

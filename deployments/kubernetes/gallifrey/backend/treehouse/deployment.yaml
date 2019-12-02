@@ -19,7 +19,7 @@ spec:
       - name: treehouse
         image: nicokahlert/gallifrey-treehouse@sha256:6191132f7f4a5f787f54857e0a1f1ab19d0dd8d0f254803e60f478aecc6ff2ac
         volumeMounts:
-        - mountPath: /etc/treehouse
+        - mountPath: /etc/gallifrey
           name: treehouse-config-vol
         ports:
         - containerPort: 80
