@@ -50,8 +50,8 @@ class S3ImageStore
       @s3.create_bucket(bucket: treehouse_bucket)
       puts "Created Bucket #{treehouse_bucket}"
       @s3.put_bucket_acl({
-        acl:  'public-read',
-        bucket:  treehouse_bucket,
+        acl: 'public-read',
+        bucket: treehouse_bucket
       })
     end
     true

@@ -7,19 +7,22 @@ require 'base64'
 # A Post
 class Post
   attr_reader :id, :heading, :user, :license, :tags, :date, :image, :description
-  def initialize(heading, user, license, tags, date, image, description)
-    @id = SecureRandom.hex
+  def initialize(
+    heading, user, license, tags, image, description,
+    id = nil, date = nil
+  )
+    @id = id || SecureRandom.hex
     @heading = heading
     @user = user
     @license = license
-    @date = date
+    @date = date || Time.now
     @tags = tags
     @image = image
     @description = description
   end
 
-  def to_json
-    a = {
+  def to_json(obj)
+    {
       user: @user,
       date: @date,
       license: @license,
@@ -28,7 +31,7 @@ class Post
       heading: @heading,
       image: @image,
       description: @description
-    }.to_json
+    }.to_json(obj)
   end
 
   def self.from_json(response)
@@ -38,9 +41,10 @@ class Post
       response['user'],
       response['license'],
       response['tags'],
-      Time.now,
       Base64.decode64(response['image']),
-      response['description']
+      response['description'],
+      response['date'],
+      response['id']
     )
   end
 end

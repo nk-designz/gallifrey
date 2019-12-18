@@ -50,7 +50,8 @@ class Treehouse
     date = @meta_database.get(post_id, :date)
     image_key = @meta_database.get(post_id, :image_s3_key)
     description = @meta_database.get(post_id, :description)
-    #image_url = @s3_image_store.get_image_url(image_key)
-    Post.new(heading, user, licence, tags, date, image_key, description).to_json
+    Post.new(
+      heading, user, licence, tags, date, image_key, description, post_id
+    ).to_json
   end
 end
